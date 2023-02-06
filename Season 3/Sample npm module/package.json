@@ -1,0 +1,17 @@
+{
+  "name": "sample-npm-module",
+  "version": "1.0.0",
+  "description": "Test",
+  "main": "index.js",
+  "scripts": {
+    "test": "node index.js"
+  },
+  "keywords": [
+    "NodeJS"
+  ],
+  "author": "Arian",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
+}
