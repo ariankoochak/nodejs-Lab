@@ -4,7 +4,8 @@
   "description": "Test",
   "main": "index.js",
   "scripts": {
-    "test": "node index.js"
+    "test": "node index.js",
+    "nodemon-test" : "nodemon index.js"
   },
   "keywords": [
     "NodeJS"
