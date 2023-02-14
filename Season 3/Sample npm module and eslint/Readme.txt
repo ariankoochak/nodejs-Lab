@@ -1,6 +1,6 @@
 --------------commands---------------
 install eslint =>           npm install --save-dev eslint
-configure eslint =>         ./node_modules/.bin/eslint --init
+configure eslint =>         (in windows : npm init @eslint/config)./node_modules/.bin/eslint --init
 check file with eslint =>   ./node_modules/.bin/eslint ****.js(your file name)
 fix file with eslint =>     ./node_modules/.bin/eslint ****.js(your file name) --fix
 -------------------------------------
