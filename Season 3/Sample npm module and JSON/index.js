@@ -1,3 +1,3 @@
-const readCSV = require('./csvtojson')
+const convertor = require('./convertor')
 
-console.log(readCSV('./barcodesA.csv'))
+console.log(convertor('./barcodesA.csv'))

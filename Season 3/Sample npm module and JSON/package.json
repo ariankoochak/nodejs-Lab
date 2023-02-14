@@ -1,15 +1,15 @@
 {
-  "name": "sample-npm-module-json",
+  "name": "csv-to-json",
   "version": "1.0.0",
-  "description": "Sample npm module & JSON",
+  "description": "convert csv to json",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "nodemon index.js"
   },
   "keywords": [
-    "npm",
+    "csv",
     "json",
-    "module"
+    "convert"
   ],
   "author": "Arian",
   "license": "ISC",
