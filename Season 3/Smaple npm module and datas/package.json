@@ -1,0 +1,30 @@
+{
+  "name": "smaple-npm-module-and-datas",
+  "version": "1.0.0",
+  "description": "work with folder and move csv datas to Array",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "csv",
+    "data",
+    "npm",
+    "array"
+  ],
+  "author": "Arian",
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^8.34.0",
+    "eslint-config-prettier": "^8.6.0",
+    "eslint-config-standard": "^17.0.0",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-n": "^15.6.1",
+    "eslint-plugin-promise": "^6.1.1",
+    "nodemon": "^2.0.20",
+    "prettier": "^2.8.4"
+  },
+  "dependencies": {
+    "papaparse": "^5.3.2"
+  }
+}
