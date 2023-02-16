@@ -3,7 +3,7 @@ const productsListMaker = require('./productObjMaker')
 
 const arrayMaker = async () => {
   const data = await csvTOarray('./Datas')
-  return productsListMaker('A', data)
+  return productsListMaker(data)
 }
 
 arrayMaker().then(console.log)
