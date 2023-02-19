@@ -15,11 +15,11 @@
       $.get(
           `http://localhost:3000/${command}/${this.config.pos[0]},${this.config.pos[1]},${this.config.pos[2]}`,
           (res) => {
-            console.log(res)
+            this.changeRobotpos(res)
           }
       )
     },
-    changeRobotpos: function () {
+    changeRobotpos: function (res) {
 
     }
   }
