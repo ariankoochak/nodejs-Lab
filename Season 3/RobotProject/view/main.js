@@ -13,14 +13,14 @@
     sendCommand: function () {
       const command = this.config.input.val()
       $.get(
-          `http://localhost:3000/${command}/${this.config.pos[0]},${this.config.pos[1]},${this.config.pos[2]}`,
+          `http://127.0.0.1:3000/${command}/${this.config.pos[0]},${this.config.pos[1]},${this.config.pos[2]}`,
           (res) => {
-            this.changeRobotpos(res)
+            console.log('res')
           }
       )
     },
     changeRobotpos: function (res) {
-
+      console.log(res)
     }
   }
   ROOT.doms({

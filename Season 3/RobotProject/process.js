@@ -4,16 +4,16 @@ const process = (req) => {
     case 'MOVE':
       return move(req.pathname)
     case 'LEFT':
-      console.log('left')
+      return left(req.pathname)
       break
     case 'RIGHT':
-      console.log('right')
+      return reigh(req.pathname)
       break
     case 'REPORT':
-      console.log('report')
+      return report(req.pathname)
       break
     case 'PLACE':
-      console.log('place')
+      return place(req.pathname);
       break
   }
 }
@@ -38,6 +38,66 @@ const move = (url) => {
       break
   }
   return nowPos.join(',')
+}
+
+const left = (url) =>{
+  url = url.split('/')
+  const nowPos = posReader(url[2])
+  nowPos[1] = +nowPos[1]
+  nowPos[0] = +nowPos[0]
+  switch (nowPos[2]) {
+    case 'NORTH':
+      nowPos[2] = 'WEST'
+      break
+    case 'SOUTH':
+      nowPos[2] = 'EAST'
+      break
+    case 'WEST':
+      nowPos[2] = 'SOUTH'
+      break
+    case 'EAST':
+      nowPos[2] = 'NORTH'
+      break
+  }
+  return nowPos.join(',')
+}
+
+const right = (url) => {
+    url = url.split('/')
+    const nowPos = posReader(url[2])
+    nowPos[1] = +nowPos[1]
+    nowPos[0] = +nowPos[0]
+    switch (nowPos[2]) {
+        case 'NORTH':
+            nowPos[2] = 'EAST'
+            break
+        case 'SOUTH':
+            nowPos[2] = 'WEST'
+            break
+        case 'WEST':
+            nowPos[2] = 'NORTH'
+            break
+        case 'EAST':
+            nowPos[2] = 'SOUTH'
+            break
+    }
+    return nowPos.join(',')
+}
+
+const report = (url) => {
+    url = url.split('/')
+    const nowPos = posReader(url[2])
+    nowPos[1] = +nowPos[1]
+    nowPos[0] = +nowPos[0]
+    return nowPos.join(',')
+}
+
+const place = (url)=>{
+  url = url.split('/')
+  const nowPos = posReader(url[2])
+  nowPos[1] = +nowPos[1]
+  nowPos[0] = +nowPos[0]
+  return nowPos.join(',');
 }
 
 const posReader = (pos) => {
