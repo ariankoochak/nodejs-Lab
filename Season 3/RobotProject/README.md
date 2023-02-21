@@ -14,13 +14,6 @@ Clone or downlaod the project
   git clone https://github.com/ariankoochak/nodejs-Lab/tree/main/Season%203/RobotProject
 ```
 
-run chrome with the following command
-
-```bash
-  "C:\Program Files\Google\Chrome\Application\chrome.exe" -disable-web-security -user-data-dir="D:\temp-data"
-
-```
-
 Go to the project directory
 
 ```bash
@@ -37,6 +30,12 @@ Start the server
 
 ```bash
   npm run start
+```
+
+run chrome with the following command
+
+```bash
+  "C:\Program Files\Google\Chrome\Application\chrome.exe" -disable-web-security -user-data-dir="D:\temp-data"
 ```
 
 Open webpage file
