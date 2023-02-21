@@ -7,6 +7,7 @@ const port = 3000
 const server = http.createServer((req, res) => {
   const urlParsed = url.parse(req.url)
   const exp = processing(urlParsed)
+  console.log(exp);
   res.end(exp)
 })
 
