@@ -1,24 +1,25 @@
 const process = (req) => {
   const command = req.pathname.split('/')[1]
-  switch (command) {
-    case 'MOVE':
-      return move(req.pathname)
-    case 'LEFT':
-      return left(req.pathname)
-    case 'RIGHT':
-      return right(req.pathname)
-    case 'REPORT':
-      return report(req.pathname)
-    case 'PLACE':
-      return place(req.pathname)
-  }
-}
-
-const move = (url) => {
-  url = url.split('/')
+  const url = req.pathname.split('/')
   const nowPos = posReader(url[2])
   nowPos[1] = +nowPos[1]
   nowPos[0] = +nowPos[0]
+  switch (command) {
+    case 'MOVE':
+      return move(nowPos)
+    case 'LEFT':
+      return left(nowPos)
+    case 'RIGHT':
+      return right(nowPos)
+    case 'PLACE':
+    case 'REPORT':
+      return nowPos.join(',')
+    default:
+      return `'${command}' is not recognized as an internal or external command`
+  }
+}
+
+const move = (nowPos) => {
   switch (nowPos[2]) {
     case 'NORTH':
       if (nowPos[1] < 4) { nowPos[1]++ }
@@ -36,11 +37,7 @@ const move = (url) => {
   return nowPos.join(',')
 }
 
-const left = (url) => {
-  url = url.split('/')
-  const nowPos = posReader(url[2])
-  nowPos[1] = +nowPos[1]
-  nowPos[0] = +nowPos[0]
+const left = (nowPos) => {
   switch (nowPos[2]) {
     case 'NORTH':
       nowPos[2] = 'WEST'
@@ -58,11 +55,7 @@ const left = (url) => {
   return nowPos.join(',')
 }
 
-const right = (url) => {
-  url = url.split('/')
-  const nowPos = posReader(url[2])
-  nowPos[1] = +nowPos[1]
-  nowPos[0] = +nowPos[0]
+const right = (nowPos) => {
   switch (nowPos[2]) {
     case 'NORTH':
       nowPos[2] = 'EAST'
@@ -77,22 +70,6 @@ const right = (url) => {
       nowPos[2] = 'SOUTH'
       break
   }
-  return nowPos.join(',')
-}
-
-const report = (url) => {
-  url = url.split('/')
-  const nowPos = posReader(url[2])
-  nowPos[1] = +nowPos[1]
-  nowPos[0] = +nowPos[0]
-  return nowPos.join(',')
-}
-
-const place = (url) => {
-  url = url.split('/')
-  const nowPos = posReader(url[2])
-  nowPos[1] = +nowPos[1]
-  nowPos[0] = +nowPos[0]
   return nowPos.join(',')
 }
 

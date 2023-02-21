@@ -7,10 +7,10 @@ const port = 3000
 const server = http.createServer((req, res) => {
   const urlParsed = url.parse(req.url)
   const exp = processing(urlParsed)
-  console.log(exp);
+  if (exp.length > 15) { res.statusCode = 401 }
   res.end(exp)
 })
 
 server.listen(port, hostname, () => {
-  console.log('server balaaaa')
+  console.log('server running...')
 })

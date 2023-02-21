@@ -10,7 +10,6 @@ section > div {
     height: 200px;
     background: white;
     padding: 1rem;
-    cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
