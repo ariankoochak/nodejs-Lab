@@ -2,13 +2,39 @@ const express = require("express");
 const app = express();
 const port = 4000;
 
-app.use(express.json());
-
 const users = [{ name: "Ehsan", age: 31 }];
+///////////////////////////////////////middlewares
+const myLogger = function (req, res, next) {
+  console.log("LOGGED");
+  next();
+};
+
+const checkAccess = function (req, res, next) {
+  // Process
+  // Authentication
+  req.user = "Ehsan";
+
+  next();
+};
+
+const handleUser2 = function (req, res, next) {
+  // Process
+  // Authentication
+  req.user2 = "Jack";
+
+  next();
+};
+////////////////////////////////////////////////////
+app.use(myLogger);//use middleware
+app.use(express.json());//use middleware
 
 // READ
-app.get("/", function (req, res) {
-  res.send(`User Number: ${users.length}`);
+app.get("/", checkAccess, handleUser2, function (req, res) {//use middleware in specific place
+  res.json({
+    users: users,
+    userName: req.user,
+    userName2: req.user2,
+  });
 });
 
 // READ
