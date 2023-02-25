@@ -1,0 +1,19 @@
+{
+  "name": "express-js-personal-website-morgan-404handling",
+  "version": "1.0.0",
+  "description": "morgan-404handling",
+  "main": "index.js",
+  "scripts": {
+    "start" : "nodemon start",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Arian",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "nodemon": "^2.0.20"
+  },
+  "devDependencies": {
+    "morgan": "^1.10.0"
+  }
+}
