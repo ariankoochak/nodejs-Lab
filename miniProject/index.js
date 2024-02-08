@@ -1,16 +1,17 @@
 const http = require('http')
 const products = require('./data/products.json')
 const productsControllers = require('./controllers/products.controller')
+const errorsHandler = require('./controllers/errors.controller')
 const port = 3000
 
 const server = http.createServer((req,res)=>{
     if (req.url === "/api/products") {
         productsControllers.getProducts(req,res)
     }
-    else{
-        res.writeHead(404, { "Content-Type": "application/json" });
-        res.write(JSON.stringify({message : 'api not found!'}));
-        res.end()
+    else if (req.url.match(/\/api\/products\/[0-9]+/)) {
+        productsControllers.getProductById(req,res)
+    } else {
+        errorsHandler.wrongUrlHandler(res)
     }
 })
 
