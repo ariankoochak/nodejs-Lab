@@ -5,13 +5,16 @@ const errorsHandler = require('./controllers/errors.controller')
 const port = 3000
 
 const server = http.createServer((req,res)=>{
-    if (req.url === "/api/products") {
+    if (req.url === "/api/products" && req.method === 'GET') {
         productsControllers.getProducts(req,res)
     }
-    else if (req.url.match(/\/api\/products\/[0-9]+/)) {
-        productsControllers.getProductById(req,res)
+    else if (req.url.match(/\/api\/products\/[0-9]+/) && req.method === "GET") {
+        productsControllers.getProductById(req, res);
+    }
+    else if (req.url === "/api/product" && req.method === "POST") {
+        productsControllers.createNewProdcut(req,res)
     } else {
-        errorsHandler.wrongUrlHandler(res)
+        errorsHandler.wrongUrlHandler(res);
     }
 })
 

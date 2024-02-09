@@ -1,4 +1,4 @@
-const { findProducts, findProductById } = require("../models/products.model");
+const { findProducts, findProductById, addProduct } = require("../models/products.model");
 
 async function getProducts(req,res){
     try {
@@ -34,9 +34,36 @@ async function getProductById(req,res){
         }
 }
 
+async function createNewProdcut(req, res) {
+    try {
+        let data = ''
+        req.on('data',(jsonDatas)=>{
+            data += jsonDatas.toString();
+        })
+        req.on('end',async ()=>{
+            const result = await addProduct({id:Date.now(),...JSON.parse(data)})
+            if(result){
+                res.writeHead(201, { "Content-Type": "application/json" });
+                res.write(JSON.stringify({ message: "product added successfully" }));
+                res.end();
+            }
+            else{
+                res.writeHead(500, { "Content-Type": "application/json" });
+                res.write(JSON.stringify({ message: "server error" }));
+                res.end();
+            }
+        })
+    } catch (error) {
+        res.writeHead(500, { "Content-Type": "application/json" });
+        res.write(JSON.stringify({ message: "server error" }));
+        res.end();
+    }
+}
+
 const productsControllers = {
     getProducts,
-    getProductById
+    getProductById,
+    createNewProdcut
 }
 
 module.exports = productsControllers;
