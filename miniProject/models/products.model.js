@@ -1,8 +1,6 @@
-const { resolve } = require('path');
 const products = require('../data/products.json')
 const productsPath = `${process.cwd()}/data/products.json`;
 const fs = require('fs');
-const { rejects } = require('assert');
 async function findProducts(){
     return new Promise((resolve, reject) => {
         resolve(products)
