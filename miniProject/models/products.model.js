@@ -32,7 +32,6 @@ async function addProduct(product) {
 
 async function updateProductById(id,payload){
     return new Promise((resolve,reject)=>{
-        console.log(payload);
         products.map((product)=>{
             if(product.id == id){
                 Object.assign(product,payload);
@@ -49,11 +48,28 @@ async function updateProductById(id,payload){
     })
 }
 
+async function deleteProductById(id){
+    return new Promise((resolve, reject) => {
+        console.log(id);
+        const newProductList = products.filter((product)=>{
+            return product.id != id
+        })
+        fs.writeFile(productsPath, JSON.stringify(newProductList), (err) => {
+            if (err) {
+                console.log(err);
+                reject(false);
+            }
+            resolve(true);
+        });
+    });
+}
+
 const productModel = {
     findProducts,
     findProductById,
     addProduct,
     updateProductById,
+    deleteProductById
 }
 
 module.exports = productModel;

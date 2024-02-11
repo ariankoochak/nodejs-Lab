@@ -1,4 +1,4 @@
-const { findProducts, findProductById, addProduct, updateProductById } = require("../models/products.model");
+const { findProducts, findProductById, addProduct, updateProductById, deleteProductById } = require("../models/products.model");
 
 async function getProducts(req,res){
     try {
@@ -96,11 +96,43 @@ async function updateProduct(req,res){
     }
 }
 
+async function deleteProduct(req,res){
+    try {
+        const id = req.url.split("/")[3];
+        const product = await findProductById(id);
+            if (product) {
+                const result = await deleteProductById(id);
+                if (result) {
+                    res.writeHead(201, { "Content-Type": "application/json" });
+                    res.write(
+                        JSON.stringify({
+                            message: "product deleted successfully",
+                        })
+                    );
+                    res.end();
+                } else {
+                    res.writeHead(500, { "Content-Type": "application/json" });
+                    res.write(JSON.stringify({ message: "server error" }));
+                    res.end();
+                }
+            } else {
+                res.writeHead(404, { "Content-Type": "application/json" });
+                res.write(JSON.stringify({ message: "product not found" }));
+                res.end();
+            }
+    } catch (error) {
+        res.writeHead(500, { "Content-Type": "application/json" });
+        res.write(JSON.stringify({ message: "server error" }));
+        res.end();
+    }
+}
+
 const productsControllers = {
     getProducts,
     getProductById,
     createNewProdcut,
-    updateProduct
+    updateProduct,
+    deleteProduct,
 };
 
 module.exports = productsControllers;

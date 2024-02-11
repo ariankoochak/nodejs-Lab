@@ -11,6 +11,12 @@ const server = http.createServer((req,res)=>{
     else if (req.url.match(/\/api\/products\/[0-9]+/) && req.method === "GET") {
         productsControllers.getProductById(req, res);
     }
+    else if (req.url.match(/\/api\/products\/[0-9]+/) && req.method === "GET") {
+        productsControllers.getProductById(req, res);
+    }
+    else if (req.url.match(/\/api\/products\/[0-9]+/) && req.method === "DELETE") {
+        productsControllers.deleteProduct(req, res);
+    }
     else if (req.url === "/api/product" && req.method === "POST") {
         productsControllers.createNewProdcut(req, res);
     } 
