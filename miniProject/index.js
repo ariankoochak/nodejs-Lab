@@ -5,25 +5,27 @@ const errorsHandler = require('./controllers/errors.controller')
 const port = 3000
 
 const server = http.createServer((req,res)=>{
-    if (req.url === "/api/products" && req.method === 'GET') {
+    const {url,method} = req;
+    const singleProductRegex = /\/api\/products\/[0-9]+/;
+    const apiRoute = "/api/products";
+    if (url === apiRoute && method === 'GET') {
         productsControllers.getProducts(req,res)
     }
-    else if (req.url.match(/\/api\/products\/[0-9]+/) && req.method === "GET") {
+    else if (url.match(singleProductRegex) && method === "GET") {
         productsControllers.getProductById(req, res);
     }
-    else if (req.url.match(/\/api\/products\/[0-9]+/) && req.method === "GET") {
+    else if (url.match(singleProductRegex) && method === "GET") {
         productsControllers.getProductById(req, res);
     }
-    else if (req.url.match(/\/api\/products\/[0-9]+/) && req.method === "DELETE") {
+    else if (url.match(singleProductRegex) && method === "DELETE") {
         productsControllers.deleteProduct(req, res);
     }
-    else if (req.url === "/api/product" && req.method === "POST") {
+    else if (url === "/api/products" && method === "POST") {
         productsControllers.createNewProdcut(req, res);
     } 
-    else if (req.url.match(/\/api\/products\/[0-9]+/) && req.method === "PUT") {
+    else if (url.match(singleProductRegex) && method === "PUT") {
         productsControllers.updateProduct(req, res);
-    } 
-    else {
+    } else {
         errorsHandler.wrongUrlHandler(res);
     }
 })
