@@ -1,5 +1,4 @@
 const http = require('http')
-const products = require('./data/products.json')
 const productsControllers = require('./controllers/products.controller')
 const errorsHandler = require('./controllers/errors.controller')
 const port = 3000
