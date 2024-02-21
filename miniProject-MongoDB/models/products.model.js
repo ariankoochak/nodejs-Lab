@@ -37,20 +37,12 @@ async function updateProductById(id,payload){
         resolve(result)
     })
 }
-//TODO: add mongoDBs
+
 async function deleteProductById(id){
+    const db = await new mongoDBconnection().getDBtunnel("users");
+    let result = await db.deleteOne({ _id: new ObjectId(id)});
     return new Promise((resolve, reject) => {
-        console.log(id);
-        const newProductList = products.filter((product)=>{
-            return product.id != id
-        })
-        fs.writeFile(productsPath, JSON.stringify(newProductList), (err) => {
-            if (err) {
-                console.log(err);
-                reject(false);
-            }
-            resolve(true);
-        });
+        resolve(result);
     });
 }
 

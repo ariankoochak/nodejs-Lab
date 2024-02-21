@@ -93,14 +93,13 @@ async function updateProduct(req,res){
         res.end();
     }
 }
-//TODO: add mongoDB style!
+
 async function deleteProduct(req,res){
     try {
         const id = req.url.split("/")[3];
-        const product = await findProductById(id);
-            if (product) {
-                const result = await deleteProductById(id);
-                if (result) {
+        const result = await deleteProductById(id);
+            if (result.deletedCount > 0) {
+                if (result.acknowledged) {
                     res.writeHead(201, { "Content-Type": "application/json" });
                     res.write(
                         JSON.stringify({
