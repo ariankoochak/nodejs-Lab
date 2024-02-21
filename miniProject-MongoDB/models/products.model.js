@@ -19,17 +19,11 @@ async function findProductById(id) {
         resolve(result);
     });
 }
-//TODO: add mongoDB
 async function addProduct(product) {
-    products.push(product)
+    const db = await new mongoDBconnection().getDBtunnel("users");
+    const result = await db.insertOne(product);
     return new Promise((resolve, reject) => {
-        fs.writeFile(productsPath, JSON.stringify(products), (err) => {
-            if (err) {
-                console.log(err);
-                reject(false);
-            }
-            resolve(true);
-        });
+        resolve(result.acknowledged);
     });
 }
 //TODO: add mongoDB

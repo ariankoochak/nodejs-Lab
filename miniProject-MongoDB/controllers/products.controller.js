@@ -33,8 +33,7 @@ async function getProductById(req,res){
             res.end();
         }
 }
-//TODO: add mongoDB style!
-//FIXME: change function name to correct and fix in index.js
+
 async function createNewProduct(req, res) {
     try {
         let data = ''
@@ -42,7 +41,7 @@ async function createNewProduct(req, res) {
             data += jsonDatas.toString();
         })
         req.on('end',async ()=>{
-            const result = await addProduct({id:Date.now(),...JSON.parse(data)})
+            const result = await addProduct({...JSON.parse(data)})
             if(result){
                 res.writeHead(201, { "Content-Type": "application/json" });
                 res.write(JSON.stringify({ message: "product added successfully" }));
