@@ -26,22 +26,15 @@ async function addProduct(product) {
         resolve(result.acknowledged);
     });
 }
-//TODO: add mongoDB
+
 async function updateProductById(id,payload){
+    const db = await new mongoDBconnection().getDBtunnel("users");
+    let result = await db.updateOne({ _id: new ObjectId(id) },{
+        $set : payload
+    });
+    console.log(result);
     return new Promise((resolve,reject)=>{
-        products.map((product)=>{
-            if(product.id == id){
-                Object.assign(product,payload);
-            }
-            return product
-        })
-        fs.writeFile(productsPath, JSON.stringify(products), (err) => {
-            if (err) {
-                console.log(err);
-                reject(false);
-            }
-            resolve(true);
-        });
+        resolve(result)
     })
 }
 //TODO: add mongoDBs
