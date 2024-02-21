@@ -35,7 +35,7 @@ async function getProductById(req,res){
 }
 //TODO: add mongoDB style!
 //FIXME: change function name to correct and fix in index.js
-async function createNewProdcut(req, res) {
+async function createNewProduct(req, res) {
     try {
         let data = ''
         req.on('data',(jsonDatas)=>{
@@ -131,7 +131,7 @@ async function deleteProduct(req,res){
 const productsControllers = {
     getProducts,
     getProductById,
-    createNewProdcut,
+    createNewProduct,
     updateProduct,
     deleteProduct,
 };

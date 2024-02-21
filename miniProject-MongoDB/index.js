@@ -18,7 +18,7 @@ const server = http.createServer((req,res)=>{
         productsControllers.deleteProduct(req, res);
     }
     else if (url === "/api/products" && method === "POST") {
-        productsControllers.createNewProdcut(req, res);
+        productsControllers.createNewProduct(req, res);
     } 
     else if (url.match(singleProductRegex) && method === "PUT") {
         productsControllers.updateProduct(req, res);
