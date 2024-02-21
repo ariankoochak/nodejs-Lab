@@ -5,7 +5,6 @@ const port = 3000
 
 const server = http.createServer((req,res)=>{
     const {url,method} = req;
-    //FIXME: update regex of productID for mongoDB Object ID
     const singleProductRegex = /\/api\/products\/[0-9]+/;
     const apiRoute = "/api/products";
     if (url === apiRoute && method === 'GET') {
