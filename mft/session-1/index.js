@@ -1,8 +1,7 @@
 const names = ["Arian", "Behrad", "Salar", "Yekta", "Amir", "MohammadHossein"];
 
 function solve1(arr) {
-    arr = arr.join("");
-    return arr.length;
+    return arr.join("").length;
 }
 
 function solve2(arr) {
