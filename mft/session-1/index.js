@@ -1,10 +1,10 @@
 const names = ["Arian", "Behrad", "Salar", "Yekta", "Amir", "MohammadHossein"];
 
-function solve1(arr) {
+const solve1 = (arr)=> {
     return arr.join("").length;
 }
 
-function solve2(arr) {
+const solve2 = (arr)=> {
     arr.push(0);
     for (const ind of arr) {
         if (typeof ind === "string") {
